@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Three trips for October</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F3F5;
+  --surface:#FFFFFF;
+  --ink:#1A1D21;
+  --ink-2:#4A5058;
+  --ink-3:#5A616B;
+  --rule:#D9DDE2;
+  --rule-2:#E9ECEF;
+  --warn-bg:#FDF4E3;
+  --warn-ink:#7A4E05;
+  --warn-rule:#E0C07A;
+  --deep:#0D2B2E;
+  --accent:#0F5C5A;
+  --accent-2:#5B7FB9;
+  --tint:#E4EDEC;
+  --on-accent:#FFFFFF;
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"Atkinson Hyperlegible","Helvetica Neue",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);-webkit-text-size-adjust:100%;}
+*,*::before,*::after{box-sizing:inherit;}
+
+:root[data-dest="azores"]{--deep:#0D2B2E;--accent:#0F5C5A;--accent-2:#5B7FB9;--tint:#E3EDEC;}
+:root[data-dest="quebec"]{--deep:#2E1B12;--accent:#8C3B1E;--accent-2:#B07A2A;--tint:#F1E7DF;}
+:root[data-dest="korea"] {--deep:#191F2C;--accent:#2E4062;--accent-2:#6E8B6B;--tint:#E4E8EE;}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#15181C;--surface:#1D2126;--ink:#ECEEF1;--ink-2:#B2BAC4;--ink-3:#848D98;
+    --rule:#343A42;--rule-2:#272C32;--warn-bg:#2E2512;--warn-ink:#E8C87E;--warn-rule:#5C4A1E;
+    --on-accent:#10141A;
+  }
+  :root:not([data-theme="light"])[data-dest="azores"]{--deep:#081A1C;--accent:#6FBDB6;--accent-2:#8FAEDC;--tint:#1B2A2A;}
+  :root:not([data-theme="light"])[data-dest="quebec"]{--deep:#1C100A;--accent:#E0845C;--accent-2:#D7A55C;--tint:#2B211B;}
+  :root:not([data-theme="light"])[data-dest="korea"] {--deep:#10141D;--accent:#8EA6D0;--accent-2:#9CBA98;--tint:#1F242D;}
+}
+
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem;}
+
+/* ---------- masthead ---------- */
+.masthead{padding:2.75rem 0 1.5rem;}
+.masthead p{margin:0 0 .4rem;color:var(--ink-3);font-size:.9rem;letter-spacing:.01em;}
+.masthead h1{
+  font-family:var(--serif);font-weight:500;font-size:clamp(2rem,6vw,3.1rem);
+  line-height:1.05;margin:0;letter-spacing:-.015em;
+}
+.masthead .sub{margin-top:.75rem;max-width:40ch;color:var(--ink-2);font-size:1rem;}
+
+/* ---------- tabs ---------- */
+.tabs{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:var(--paper);border-bottom:1px solid var(--rule);
+}
+.tabs-inner{max-width:62rem;margin:0 auto;padding:0 1.25rem;display:flex;gap:.25rem;overflow-x:auto;scrollbar-width:none;}
+.tabs-inner::-webkit-scrollbar{display:none;}
+.tab{
+  appearance:none;background:none;border:0;border-bottom:3px solid transparent;
+  font-family:var(--sans);font-size:1rem;color:var(--ink-3);
+  padding:.95rem .85rem;cursor:pointer;white-space:nowrap;
+  transition:color .15s,border-color .15s;
+}
+.tab:hover{color:var(--ink);}
+.tab .fl{font-size:1.15rem;margin-right:.4rem;}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:700;}
+.tab:focus-visible{outline:2px solid var(--accent);outline-offset:-4px;border-radius:3px;}
+
+/* ---------- scene strip ---------- */
+.strip{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr));
+  gap:1rem .9rem;
+  max-width:none;margin:0;
+  padding:1.5rem clamp(1rem,3vw,2.25rem) .75rem;
+}
+.scene{margin:0;min-width:0;}
+.scene svg{display:block;width:100%;height:auto;border-radius:2px;background:var(--deep);}
+.scene figcaption{
+  margin:.5rem .1rem 0;font-size:.82rem;color:var(--ink-3);line-height:1.45;
+}
+.scene figcaption b{color:var(--ink-2);font-weight:700;display:block;}
+
+/* ---------- hero ---------- */
+.hero{padding:1.75rem 0 .5rem;border-bottom:1px solid var(--rule);}
+.hero .flag{font-size:2.6rem;line-height:1;display:block;margin-bottom:.5rem;}
+.hero h2{
+  font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,5vw,2.6rem);
+  margin:0 0 .6rem;line-height:1.1;letter-spacing:-.012em;
+}
+.hero .lede{margin:0;max-width:54ch;color:var(--ink-2);font-size:1.05rem;}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:0;margin:1.5rem 0 0;border-top:1px solid var(--rule);}
+.fact{padding:.9rem 1rem .9rem 0;border-bottom:1px solid var(--rule-2);}
+.fact dt{font-size:.78rem;color:var(--ink-3);margin:0 0 .15rem;}
+.fact dd{margin:0;font-family:var(--serif);font-size:1.22rem;color:var(--ink);line-height:1.25;}
+
+/* ---------- sections ---------- */
+section.block{padding:2.25rem 0;border-bottom:1px solid var(--rule);}
+section.block:last-of-type{border-bottom:0;}
+h3{
+  font-family:var(--serif);font-weight:600;font-size:1.42rem;
+  margin:0 0 .35rem;letter-spacing:-.008em;
+}
+h3 + .note{margin-top:0;}
+h4{font-family:var(--sans);font-weight:700;font-size:1rem;margin:1.6rem 0 .4rem;}
+.note{color:var(--ink-2);max-width:66ch;margin:.5rem 0 1.1rem;}
+p{max-width:68ch;}
+a{color:var(--accent);text-underline-offset:2px;}
+
+/* ---------- level switch ---------- */
+.levels{display:flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;max-width:30rem;margin:1.1rem 0 1.5rem;}
+.lv{
+  flex:1;appearance:none;background:var(--surface);border:0;border-right:1px solid var(--rule);
+  font-family:var(--sans);font-size:.92rem;color:var(--ink-2);padding:.7rem .5rem;cursor:pointer;
+}
+.lv:last-child{border-right:0;}
+.lv[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);font-weight:700;}
+.lv:focus-visible{outline:2px solid var(--accent);outline-offset:-4px;}
+.lv small{display:block;font-size:.73rem;opacity:.8;font-weight:400;}
+
+.lvl-meta{
+  display:flex;flex-wrap:wrap;gap:.4rem 1.6rem;padding:.9rem 1.1rem;background:var(--tint);
+  border-left:3px solid var(--accent);margin-bottom:1.4rem;
+}
+.lvl-meta span{font-size:.92rem;color:var(--ink-2);}
+.lvl-meta b{font-family:var(--serif);font-size:1.1rem;color:var(--ink);font-weight:600;}
+
+/* ---------- legs ---------- */
+.legs{list-style:none;margin:0;padding:0;counter-reset:leg;}
+.legs li{
+  display:grid;grid-template-columns:2.2rem 1fr;gap:0 .9rem;
+  padding:.95rem 0;border-bottom:1px solid var(--rule-2);
+}
+.legs li::before{
+  counter-increment:leg;content:counter(leg);
+  font-family:var(--serif);font-size:1.05rem;color:var(--accent);
+  padding-top:.1rem;
+}
+.legs .nm{font-weight:700;}
+.legs .ni{color:var(--ink-3);font-size:.88rem;margin-left:.5rem;font-weight:400;}
+.legs .ds{grid-column:2;color:var(--ink-2);font-size:.94rem;margin-top:.15rem;}
+.legs .tr{grid-column:2;color:var(--ink-3);font-size:.84rem;margin-top:.3rem;}
+
+/* ---------- tables ---------- */
+.scroller{overflow-x:auto;margin:1rem 0 .5rem;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;min-width:34rem;font-size:.93rem;}
+th,td{text-align:left;padding:.65rem .8rem .65rem 0;border-bottom:1px solid var(--rule-2);vertical-align:top;}
+thead th{
+  font-size:.8rem;color:var(--ink-3);font-weight:700;
+  border-bottom:1px solid var(--rule);white-space:nowrap;
+}
+tbody th{font-weight:700;white-space:nowrap;color:var(--ink);}
+td.num{font-family:var(--serif);font-size:1rem;white-space:nowrap;}
+tr.total th,tr.total td{border-top:1px solid var(--rule);border-bottom:0;font-weight:700;padding-top:.8rem;}
+tr.total td.num{font-size:1.15rem;color:var(--accent);}
+
+/* ---------- callouts ---------- */
+.warn{
+  background:var(--warn-bg);border:1px solid var(--warn-rule);border-left-width:3px;
+  padding:.95rem 1.1rem;margin:1.2rem 0;border-radius:2px;
+}
+.warn p{margin:0;max-width:62ch;color:var(--warn-ink);font-size:.95rem;}
+.warn p + p{margin-top:.5rem;}
+.warn b{color:var(--warn-ink);}
+
+.pick{border-left:3px solid var(--accent);background:var(--tint);padding:.95rem 1.1rem;margin:1.2rem 0;}
+.pick p{margin:0;font-size:.95rem;color:var(--ink-2);max-width:62ch;}
+.pick p + p{margin-top:.5rem;}
+
+ul.plain{padding-left:1.1rem;margin:.6rem 0 1rem;max-width:66ch;}
+ul.plain li{margin-bottom:.45rem;color:var(--ink-2);}
+ul.plain li b{color:var(--ink);}
+
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem 2.5rem;}
+.split h4:first-child{margin-top:0;}
+
+footer{padding:2.5rem 0 4rem;color:var(--ink-3);font-size:.86rem;}
+footer p{max-width:62ch;}
+
+.shot{position:relative;}
+.pickrow{display:flex;gap:.7rem;margin-top:.35rem;flex-wrap:wrap;}
+.pickrow button{
+  appearance:none;background:none;border:0;padding:0;cursor:pointer;
+  font-family:var(--sans);font-size:.78rem;color:var(--accent);
+  text-decoration:underline;text-underline-offset:2px;
+}
+.pickrow button.muted{color:var(--ink-3);}
+.pickrow button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+#pickerBack{
+  position:fixed;inset:0;background:rgba(10,12,15,.72);z-index:60;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:calc(env(safe-area-inset-top,0px) + 2rem) 1rem 2rem;overflow-y:auto;
+}
+#pickerBox{
+  background:var(--surface);color:var(--ink);width:min(60rem,100%);
+  border-radius:4px;padding:1.25rem 1.4rem 1.6rem;
+}
+#pickerBox h4{margin:0 0 .2rem;font-size:1.05rem;}
+#pickerBox .hint{color:var(--ink-3);font-size:.86rem;margin:0 0 .9rem;max-width:58ch;}
+#pickerBar{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;}
+#pickerBar input{
+  flex:1 1 16rem;font-family:var(--sans);font-size:.95rem;padding:.55rem .7rem;
+  border:1px solid var(--rule);border-radius:3px;background:var(--paper);color:var(--ink);
+}
+#pickerBar button{
+  font-family:var(--sans);font-size:.92rem;padding:.55rem 1rem;cursor:pointer;
+  border:1px solid var(--accent);border-radius:3px;background:var(--accent);color:var(--on-accent);
+}
+#pickerBar button.ghost{background:none;color:var(--ink-2);border-color:var(--rule);}
+#pickerGrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(9.5rem,1fr));gap:.6rem;
+}
+#pickerGrid button{
+  padding:0;border:1px solid var(--rule);border-radius:3px;background:var(--paper);
+  cursor:pointer;overflow:hidden;display:block;
+}
+#pickerGrid button:hover,#pickerGrid button:focus-visible{border-color:var(--accent);outline:none;}
+#pickerGrid img{display:block;width:100%;height:7rem;object-fit:cover;}
+#pickerGrid span{
+  display:block;padding:.35rem .4rem;font-size:.7rem;color:var(--ink-3);
+  line-height:1.3;text-align:left;overflow:hidden;
+}
+#pickerMsg{color:var(--ink-2);font-size:.92rem;margin:.4rem 0 0;max-width:62ch;}
+#pickerOut{
+  width:100%;min-height:11rem;font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:.78rem;padding:.7rem;border:1px solid var(--rule);border-radius:3px;
+  background:var(--paper);color:var(--ink);margin-top:.6rem;
+}
+.exportbar{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--rule);}
+.exportbar button{
+  font-family:var(--sans);font-size:.9rem;padding:.5rem .95rem;cursor:pointer;
+  border:1px solid var(--rule);border-radius:3px;background:var(--surface);color:var(--ink-2);
+}
+.scene figcaption .find{
+  display:inline-block;margin-top:.3rem;font-size:.78rem;
+  color:var(--accent);text-decoration:underline;text-underline-offset:2px;
+}
+.shot img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;border-radius:2px;display:block;
+}
+.strip figure.photo-only svg{display:none;}
+[hidden]{display:none !important;}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important;scroll-behavior:auto !important;}}
+@media (max-width:640px){
+  .fact{padding-right:.5rem;}
+  .levels{max-width:none;}
+  .lv{font-size:.84rem;padding:.6rem .3rem;}
+}
+</style>
+</head>
+<body data-dest="azores">
+
+<div class="wrap masthead">
+  <p>October 2027 · one traveller · ten to fourteen days</p>
+  <h1>Three trips, one window</h1>
+  <p class="sub">No driver's licence, so every route below runs on trains, coaches and city transit. Pick a destination, then set how hard you want to push it.</p>
+</div>
+
+<nav class="tabs" aria-label="Destinations">
+  <div class="tabs-inner" role="tablist">
+    <button class="tab" role="tab" id="t-azores" aria-controls="p-azores" aria-selected="true"  data-d="azores"><span class="fl">🇵🇹</span>Azores</button>
+    <button class="tab" role="tab" id="t-quebec" aria-controls="p-quebec" aria-selected="false" data-d="quebec"><span class="fl">🇨🇦</span>Québec</button>
+    <button class="tab" role="tab" id="t-korea"  aria-controls="p-korea"  aria-selected="false" data-d="korea"><span class="fl">🇰🇷</span>South Korea</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ AZORES ══════════════════════════ -->
+<div id="p-azores" role="tabpanel" aria-labelledby="t-azores">
+
+<div class="strip">
+  <figure class="scene"><div class="shot" data-shot="az-sete"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Twin crater lakes seen from the rim">
+    <defs><linearGradient id="az1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2B5F6E"/><stop offset="1" stop-color="#8FB7B4"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#az1s)"/>
+    <circle cx="310" cy="56" r="24" fill="#E8F0ED" opacity=".55"/>
+    <path d="M0 128 L70 86 L132 118 L198 74 L268 112 L330 80 L400 116 V250 H0Z" fill="#3E6B63"/>
+    <path d="M0 152 L62 120 L140 150 L214 112 L296 148 L400 118 V250 H0Z" fill="#2F554F"/>
+    <ellipse cx="128" cy="196" rx="78" ry="26" fill="#4F8F7A"/>
+    <ellipse cx="276" cy="186" rx="62" ry="21" fill="#3C6E99"/>
+    <path d="M0 176 L58 156 L118 172 L150 162 L200 184 L250 166 L320 180 L400 158 V250 H0Z" fill="#234440" opacity=".88"/>
+    <ellipse cx="124" cy="206" rx="60" ry="18" fill="#58A085" opacity=".9"/>
+    <ellipse cx="282" cy="196" rx="48" ry="15" fill="#4679A6" opacity=".9"/>
+    <path d="M0 214 L96 198 L186 216 L286 200 L400 212 V250 H0Z" fill="#1B332F"/>
+  </svg></div><figcaption><b>Sete Cidades</b>Twin crater lakes, one green and one blue. Your Day 3 tour, and your fog gamble.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="az-whale"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whale fluke beside a small boat on the Atlantic">
+    <defs><linearGradient id="az2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9DBCC9"/><stop offset="1" stop-color="#4C7E92"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#az2s)"/>
+    <circle cx="74" cy="52" r="19" fill="#F2F6F4" opacity=".5"/>
+    <path d="M0 108 H400" stroke="#2F5C6C" stroke-width="2" opacity=".5"/>
+    <path d="M0 112 L400 112 V250 H0Z" fill="#2B5468"/>
+    <path d="M196 182 c0-34 10-58 26-74 4 18-4 30-10 44 14-10 28-26 40-44 6 22-16 52-32 68 Z" fill="#14303E"/>
+    <ellipse cx="222" cy="188" rx="52" ry="9" fill="#17384A" opacity=".7"/>
+    <path d="M84 176 h62 l-9 16 H93 Z" fill="#E7EDEA"/>
+    <rect x="104" y="162" width="26" height="14" fill="#D3DEDB"/>
+    <rect x="113" y="148" width="3" height="16" fill="#9FB2B0"/>
+    <path d="M0 150 q40 -8 80 0 t80 0" stroke="#5E90A3" stroke-width="2" fill="none" opacity=".7"/>
+    <path d="M240 214 q50 -9 100 0 t60 0" stroke="#3E6E82" stroke-width="2" fill="none" opacity=".8"/>
+    <path d="M0 226 q60 -10 120 0 t140 0 t140 0" stroke="#3A6779" stroke-width="2" fill="none" opacity=".6"/>
+  </svg></div><figcaption><b>Whale watching</b>Half a day out of Portas do Mar. Take a seasickness tablet an hour before.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="az-furnas"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Steaming thermal pool surrounded by ferns">
+    <defs><linearGradient id="az3s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1F3A33"/><stop offset="1" stop-color="#47705E"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#az3s)"/>
+    <path d="M0 96 L64 62 L142 100 L214 60 L300 98 L400 66 V250 H0Z" fill="#2C4E42"/>
+    <g opacity=".3" fill="#DCE9E2">
+      <path d="M128 168 c-16-26 10-40 0-66 18 18 6 40 14 66Z"/>
+      <path d="M196 158 c-18-32 12-48 0-80 22 22 6 48 16 80Z"/>
+      <path d="M262 170 c-14-24 10-38 2-62 16 16 4 38 12 62Z"/>
+    </g>
+    <ellipse cx="200" cy="190" rx="130" ry="40" fill="#8A5A2B"/>
+    <ellipse cx="200" cy="188" rx="112" ry="32" fill="#C2762E"/>
+    <ellipse cx="200" cy="186" rx="92" ry="25" fill="#D98F3C"/>
+    <g fill="#1E3C33">
+      <path d="M22 232 c14-30 4-54-10-66 30 6 42 36 38 66Z"/>
+      <path d="M62 236 c10-24 2-44-10-54 26 6 34 30 30 54Z"/>
+      <path d="M378 232 c-14-30-4-54 10-66-30 6-42 36-38 66Z"/>
+      <path d="M338 236 c-10-24-2-44 10-54-26 6-34 30-30 54Z"/>
+    </g>
+    <path d="M0 226 L92 216 L200 230 L312 214 L400 226 V250 H0Z" fill="#17302A"/>
+  </svg></div><figcaption><b>Furnas</b>Iron-orange thermal water at Terra Nostra, and cozido cooked in volcanic ground.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="az-portas"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The three stone arches of Ponta Delgada's city gates">
+    <defs><linearGradient id="az4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#B9C8CF"/><stop offset="1" stop-color="#6E8794"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#az4s)"/>
+    <circle cx="332" cy="54" r="21" fill="#F4F7F5" opacity=".45"/>
+    <rect y="196" width="400" height="54" fill="#53687A"/>
+    <g fill="#F0F2EE">
+      <rect x="66" y="92" width="268" height="18"/>
+      <rect x="60" y="78" width="280" height="14"/>
+      <rect x="66" y="110" width="30" height="86"/>
+      <rect x="152" y="110" width="30" height="86"/>
+      <rect x="218" y="110" width="30" height="86"/>
+      <rect x="304" y="110" width="30" height="86"/>
+    </g>
+    <g fill="#2A3A46">
+      <path d="M96 196 v-46 a28 28 0 0 1 56 0 v46 Z"/>
+      <path d="M182 196 v-40 a18 18 0 0 1 36 0 v40 Z"/>
+      <path d="M248 196 v-46 a28 28 0 0 1 56 0 v46 Z"/>
+    </g>
+    <rect x="186" y="56" width="28" height="24" fill="#F0F2EE"/>
+    <path d="M186 56 L200 40 L214 56 Z" fill="#F0F2EE"/>
+    <g fill="#44596B" opacity=".55">
+      <rect x="0" y="206" width="400" height="3"/>
+      <rect x="0" y="220" width="400" height="3"/>
+    </g>
+  </svg></div><figcaption><b>Portas da Cidade</b>Your hotel anchor. Book inside 600 m of these arches and you'll never need a taxi.</figcaption></figure>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="flag">🇵🇹</span>
+    <h2>São Miguel, Azores</h2>
+    <p class="lede">Iceland's warmer, greener, much cheaper cousin. One hotel the whole time, guided days to reach the island, and the shortest flight of the three.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Length</dt><dd>10 days</dd></div>
+      <div class="fact"><dt>Flight from Berlin</dt><dd>7–8 h, 1 stop</dd></div>
+      <div class="fact"><dt>Bases</dt><dd>One</dd></div>
+      <div class="fact"><dt>Tipping</dt><dd>Round up only</dd></div>
+      <div class="fact"><dt>Tax shown</dt><dd>Included</dd></div>
+    </dl>
+  </header>
+
+  <section class="block">
+    <h3>How hard to push it</h3>
+    <p class="note">You're in Ponta Delgada the entire time, so the levels change pace rather than places. Each guided day costs roughly what a night in the hotel costs.</p>
+    <div class="levels" role="group" aria-label="Trip intensity, Azores">
+      <button class="lv" data-g="az" data-l="s" aria-pressed="false">Simplified<small>3 guided days</small></button>
+      <button class="lv" data-g="az" data-l="n" aria-pressed="true">Normal<small>5 guided days</small></button>
+      <button class="lv" data-g="az" data-l="t" aria-pressed="false">Tight<small>7 guided days</small></button>
+    </div>
+
+    <div data-p="az-s" hidden>
+      <div class="lvl-meta"><span>10 days</span><span><b>≈ €2,230</b></span><span>€223 a day</span><span>5 open days</span></div>
+      <ol class="legs">
+        <li><span class="nm">Arrive</span><span class="ni">Day 1</span><span class="ds">Walk to Portas da Cidade, dinner in town. You land with the evening intact.</span></li>
+        <li><span class="nm">Ponta Delgada on foot</span><span class="ni">Day 2</span><span class="ds">Gruta do Carvão lava tube inside the city, Mercado da Graça, José do Canto garden.</span><span class="tr">About €15</span></li>
+        <li><span class="nm">Sete Cidades and Lagoa do Fogo</span><span class="ni">Day 3</span><span class="ds">Full-day van tour with lunch and hotel pickup. The headline day.</span><span class="tr">€95</span></li>
+        <li><span class="nm">Whale watching</span><span class="ni">Day 4</span><span class="ds">Morning boat from Portas do Mar, afternoon free.</span><span class="tr">€70</span></li>
+        <li><span class="nm">Furnas</span><span class="ni">Day 6</span><span class="ds">Calderas, cozido lunch cooked underground, Terra Nostra thermal pool.</span><span class="tr">€85 plus €10 park entry</span></li>
+        <li><span class="nm">Five open days</span><span class="ni">Days 5, 7–10</span><span class="ds">Beaches, coastal walks, and the buffer you need when Sete Cidades is inside a cloud.</span></li>
+      </ol>
+    </div>
+
+    <div data-p="az-n">
+      <div class="lvl-meta"><span>10 days</span><span><b>≈ €2,555</b></span><span>€256 a day</span><span>3 open days</span></div>
+      <ol class="legs">
+        <li><span class="nm">Arrive</span><span class="ni">Day 1</span><span class="ds">Portas da Cidade, dinner in town.</span></li>
+        <li><span class="nm">Ponta Delgada on foot</span><span class="ni">Day 2</span><span class="ds">Gruta do Carvão, Mercado da Graça, botanical garden.</span><span class="tr">About €15</span></li>
+        <li><span class="nm">Sete Cidades and Lagoa do Fogo</span><span class="ni">Day 3</span><span class="ds">Full-day van tour with lunch, hotel pickup included.</span><span class="tr">€95</span></li>
+        <li><span class="nm">Whale watching</span><span class="ni">Day 4</span><span class="ds">Half day. Belugas aren't here, but fin, sperm and dolphins are.</span><span class="tr">€70</span></li>
+        <li><span class="nm">Open day</span><span class="ni">Day 5</span><span class="ds">Santo António beach or the coastal walk. Recovery and weather buffer.</span></li>
+        <li><span class="nm">Furnas</span><span class="ni">Day 6</span><span class="ds">Cozido lunch, Terra Nostra, Caldeira Velha on the way back.</span><span class="tr">€95</span></li>
+        <li><span class="nm">Open day</span><span class="ni">Day 7</span><span class="ds">If Sete Cidades was fogged in on Day 3, rebook it here. This is why ten days.</span></li>
+        <li><span class="nm">East island</span><span class="ni">Day 8</span><span class="ds">Nordeste and Ribeira dos Caldeirões. Waterfalls, watermills, the quiet half.</span><span class="tr">€75</span></li>
+        <li><span class="nm">Furnas by night</span><span class="ni">Day 9</span><span class="ds">Six-hour evening trip. Hot water in the dark in a volcanic valley. Strong finish.</span><span class="tr">€90</span></li>
+        <li><span class="nm">Depart</span><span class="ni">Day 10</span><span class="ds">Taxi to the airport, ten minutes.</span></li>
+      </ol>
+    </div>
+
+    <div data-p="az-t" hidden>
+      <div class="lvl-meta"><span>10 days</span><span><b>≈ €2,900</b></span><span>€290 a day</span><span>1 open day</span></div>
+      <ol class="legs">
+        <li><span class="nm">Arrive</span><span class="ni">Day 1</span><span class="ds">Evening in town.</span></li>
+        <li><span class="nm">Ponta Delgada and Forte de São Brás</span><span class="ni">Day 2</span><span class="ds">Lava tube, market, gardens, and the fort built against sixteenth-century pirates.</span></li>
+        <li><span class="nm">Sete Cidades and Lagoa do Fogo</span><span class="ni">Day 3</span><span class="tr">€95</span></li>
+        <li><span class="nm">Whale watching</span><span class="ni">Day 4</span><span class="tr">€70</span></li>
+        <li><span class="nm">Vila Franca do Campo islet</span><span class="ni">Day 5</span><span class="ds">A drowned volcanic crater you swim inside. Boat access, weather dependent.</span><span class="tr">€55</span></li>
+        <li><span class="nm">Furnas</span><span class="ni">Day 6</span><span class="tr">€95</span></li>
+        <li><span class="nm">Open day</span><span class="ni">Day 7</span><span class="ds">Your only buffer. Spend it on whatever the weather stole.</span></li>
+        <li><span class="nm">East island</span><span class="ni">Day 8</span><span class="tr">€75</span></li>
+        <li><span class="nm">Food and market tour, then Furnas by night</span><span class="ni">Day 9</span><span class="tr">€125</span></li>
+        <li><span class="nm">Depart</span><span class="ni">Day 10</span></li>
+      </ol>
+      <div class="warn"><p><b>Honest warning.</b> Seven guided days in ten leaves almost no slack. On an island where a viewpoint can be fogged in for three days running, that's the version most likely to end in frustration.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Which season, and what each one is like</h3>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col"></th><th scope="col">Winter, Dec–Feb</th><th scope="col">Spring, Mar–May</th><th scope="col">Summer, Jun–Aug</th><th scope="col">Autumn, Sep–Nov</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Air</th><td>16–18 °C day, 11–13 °C night</td><td>17–20 °C, 12–14 °C</td><td>22–25 °C, 16–19 °C</td><td>24 °C in Sep down to 19 °C in Nov</td></tr>
+        <tr><th scope="row">Sea</th><td>17–18 °C</td><td>17–18 °C, coldest in March</td><td>20–24 °C</td><td>24 °C in Sep, the year's warmest</td></tr>
+        <tr><th scope="row">Rain</th><td>Wettest. Atlantic storms and wind</td><td>Declining, May good</td><td>Driest and sunniest</td><td>Sep dry-ish, Oct–Nov wet again</td></tr>
+        <tr><th scope="row">Tourists</th><td>Lowest</td><td>Building</td><td>Peak</td><td>Drops sharply after the first week of Sep</td></tr>
+        <tr><th scope="row">Hotels</th><td>Cheapest, 40–50 % below peak</td><td>Moderate, rising into May</td><td>Highest</td><td>Sep still high, <b>Oct is the value month</b>, Nov low</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pick">
+      <p><b>Go 10–24 September</b> for the warmest sea and settled weather, or <b>early-to-mid October</b> if price matters more. October drops the hotel rate noticeably and the island goes quiet again, at the cost of higher rain risk and shorter days.</p>
+      <p>Avoid late October onwards. The magic doesn't survive the storms.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Getting there and getting around</h3>
+    <div class="split">
+      <div>
+        <h4>Flights</h4>
+        <p class="note">No direct route from Berlin. TAP via Lisbon is cleanest: roughly 3 h 15 to Lisbon, 2 h 20 onward, 7–8 hours door to door. Scheduled Airbus A320 and A321neo jets, not charters. Return fares run €280–450.</p>
+        <p class="note">Ignore the nine-hour "average" figures on comparison sites. Those include miserable layovers.</p>
+      </div>
+      <div>
+        <h4>On the island</h4>
+        <p class="note">You won't drive, and you don't need to. Every tour listed above includes hotel pickup, which is the single strongest argument for staying central.</p>
+        <p class="note">Public buses exist but serve locals, not viewpoints. They will not get you to Sete Cidades or Lagoa do Fogo. Budget about €85 for airport transfers and occasional taxis.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Where to stay</h3>
+    <p class="note">Find <b>Portas da Cidade</b> on the map and book within 600 metres of it. That single rule covers everything: tour pickups, dinner, the market, and the marina your boat leaves from.</p>
+    <h4>The zone</h4>
+    <ul class="plain">
+      <li><b>South edge</b> — Avenida Infante Dom Henrique, the seafront road</li>
+      <li><b>East edge</b> — Portas do Mar marina</li>
+      <li><b>West edge</b> — Forte de São Brás and Campo de São Francisco</li>
+      <li><b>North edge</b> — Mercado da Graça, five minutes uphill</li>
+    </ul>
+    <h4>Worth shortlisting</h4>
+    <ul class="plain">
+      <li><b>Hotel Talisman</b> — inside the pedestrian zone, rooftop pool over the harbour. Best location of the four.</li>
+      <li><b>NINE DOTS</b> — highest rated, small and quiet. Ask for a room away from the pizza oven.</li>
+      <li><b>Hotel Gaivota</b> — seafront, closest to the marina, breakfast included. Best value.</li>
+      <li><b>Vila Galé Collection</b> — converted historic building, two pools, central but quiet.</li>
+    </ul>
+    <div class="warn">
+      <p><b>The Booking.com trap.</b> Searching "Ponta Delgada" returns places that aren't in it — Lagoa, Ribeira Grande, Capelas, Vila Franca, Mosteiros, and rural houses 40–60 minutes away that need a car to reach. They look like bargains and are unusable.</p>
+      <p>Switch to map view immediately and pick only from pins beside Portas da Cidade. Ignore the list view entirely.</p>
+      <p><b>Two to think twice about:</b> NEAT Hotel Avenida and Hotel Camões. Central and cheap, but both draw repeated complaints about thin walls.</p>
+    </div>
+    <h4>Filters that matter more than price</h4>
+    <ul class="plain">
+      <li><b>Breakfast included</b> — you're leaving at 08:00 on tour days</li>
+      <li><b>Free cancellation</b> — weather-volatile destination</li>
+      <li><b>Walking distance to Portas do Mar</b> — check it before confirming</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>What it costs</h3>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col">Item</th><th scope="col">Simplified</th><th scope="col">Normal</th><th scope="col">Tight</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Flights</th><td class="num">€350</td><td class="num">€350</td><td class="num">€350</td></tr>
+        <tr><th scope="row">Hotel, 9 nights plus city tax</th><td class="num">€1,095</td><td class="num">€1,095</td><td class="num">€1,095</td></tr>
+        <tr><th scope="row">Guided days and entries</th><td class="num">€265</td><td class="num">€450</td><td class="num">€760</td></tr>
+        <tr><th scope="row">Food</th><td class="num">€390</td><td class="num">€425</td><td class="num">€460</td></tr>
+        <tr><th scope="row">Transfers and taxis</th><td class="num">€85</td><td class="num">€85</td><td class="num">€85</td></tr>
+        <tr><th scope="row">Buffer</th><td class="num">€150</td><td class="num">€150</td><td class="num">€150</td></tr>
+        <tr class="total"><th scope="row">Total</th><td class="num">€2,230</td><td class="num">€2,555</td><td class="num">€2,900</td></tr>
+      </tbody>
+    </table></div>
+    <h4>Money notes</h4>
+    <ul class="plain">
+      <li><b>VAT is inside the displayed price.</b> What you see is what you pay.</li>
+      <li><b>Tipping is not expected.</b> Round up a restaurant bill, nothing more.</li>
+      <li><b>City tax</b> is about €1–2 per person per night, settled at checkout.</li>
+      <li><b>Food is cheap:</b> lunch €12–18, dinner €22–30 with wine.</li>
+      <li><b>Biggest lever is tours, not the hotel.</b> Each guided day costs roughly one hotel night.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Is it safe</h3>
+    <p class="note">Yes, comfortably. Portugal sits in the global top ten for peacefulness and the Azores are calmer than the mainland. Safer than Berlin by a wide margin.</p>
+    <div class="split">
+      <div>
+        <h4>Wildlife</h4>
+        <p class="note">No snakes. No scorpions. Not rare — none. The islands rose from the ocean and were never attached to a continent, so nothing crawled here. The only native land mammal is a bat.</p>
+        <p class="note">Minor sea business only: sea urchins on rocky shores, and the occasional Portuguese man o' war washed up. Water shoes on rocky entries, don't touch blue things on the sand.</p>
+      </div>
+      <div>
+        <h4>Earthquakes</h4>
+        <p class="note">The only item with real substance. Three tectonic plates meet here and small tremors are routine — but São Miguel hasn't had a land eruption since 1630. The steaming ground at Furnas is the attraction, not the threat.</p>
+        <p class="note">CIVISA runs permanent seismic monitoring with the University of the Azores and publishes alerts. You are not walking into an unmonitored situation.</p>
+      </div>
+      <div>
+        <h4>Health</h4>
+        <p class="note">Trivially easy. Your EHIC works directly. Ponta Delgada has a full hospital. Tap water is drinkable, no vaccinations needed, no tropical disease.</p>
+      </div>
+      <div>
+        <h4>Pirates</h4>
+        <p class="note">Historically, genuinely yes. The islands were the last waypoint for treasure fleets returning from the Americas, which drew English privateers, French corsairs and Barbary raiders through the sixteenth and seventeenth centuries. That's why the coast is studded with forts.</p>
+        <p class="note">Today, none. Walk through Forte de São Brás on the waterfront to see the evidence.</p>
+      </div>
+    </div>
+    <div class="warn">
+      <p><b>The risks that are actually real:</b></p>
+      <p><b>Fog and wind disrupting flights.</b> It happens several times a year. Don't book anything tight on your return day.</p>
+      <p><b>Wet trails and unfenced viewpoints.</b> Volcanic rock plus constant moisture. Most tourist injuries here are falls.</p>
+      <p><b>Seasickness on the whale boat.</b> Atlantic swell, small boats. Take a tablet an hour before.</p>
+      <p><b>Sunburn through cloud.</b> UV is stronger than the grey sky suggests.</p>
+    </div>
+  </section>
+</div>
+</div>
+
+<!-- ══════════════════════════ QUÉBEC ══════════════════════════ -->
+<div id="p-quebec" role="tabpanel" aria-labelledby="t-quebec" hidden>
+
+<div class="strip">
+  <figure class="scene"><div class="shot" data-shot="qc-frontenac"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Turreted hotel silhouette above a river cliff">
+    <defs><linearGradient id="qc1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D8A96A"/><stop offset="1" stop-color="#7C5A50"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#qc1s)"/>
+    <circle cx="68" cy="62" r="22" fill="#FBEBD2" opacity=".6"/>
+    <g fill="#3A2218">
+      <rect x="140" y="112" width="128" height="86"/>
+      <rect x="112" y="136" width="34" height="62"/>
+      <rect x="262" y="128" width="40" height="70"/>
+      <rect x="186" y="66" width="38" height="50"/>
+      <path d="M186 66 L205 28 L224 66 Z"/>
+      <path d="M112 136 L129 108 L146 136 Z"/>
+      <path d="M262 128 L282 96 L302 128 Z"/>
+      <path d="M140 112 L170 86 L200 112 Z"/>
+      <path d="M208 112 L238 86 L268 112 Z"/>
+      <rect x="302" y="150" width="26" height="48"/>
+      <path d="M302 150 L315 126 L328 150 Z"/>
+    </g>
+    <g fill="#D8A96A" opacity=".8">
+      <rect x="152" y="130" width="7" height="12"/><rect x="170" y="130" width="7" height="12"/>
+      <rect x="188" y="130" width="7" height="12"/><rect x="206" y="130" width="7" height="12"/>
+      <rect x="224" y="130" width="7" height="12"/><rect x="242" y="130" width="7" height="12"/>
+      <rect x="152" y="158" width="7" height="12"/><rect x="170" y="158" width="7" height="12"/>
+      <rect x="206" y="158" width="7" height="12"/><rect x="242" y="158" width="7" height="12"/>
+      <rect x="198" y="84" width="7" height="12"/>
+    </g>
+    <path d="M0 198 L400 198 V250 H0Z" fill="#2A1710"/>
+    <path d="M0 212 q60 -8 120 0 t140 0 t140 0" stroke="#55352A" stroke-width="3" fill="none"/>
+    <path d="M0 230 q70 -8 140 0 t160 0 t100 0" stroke="#4A2E24" stroke-width="3" fill="none"/>
+  </svg></div><figcaption><b>Québec City</b>A walled town on a cliff. Five nights, and three of them are excursions.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="qc-charlevoix"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Layered autumn hills above a river">
+    <defs><linearGradient id="qc2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7C489"/><stop offset="1" stop-color="#C98A4B"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#qc2s)"/>
+    <circle cx="316" cy="48" r="18" fill="#FDF2DE" opacity=".6"/>
+    <path d="M0 104 L80 66 L164 100 L246 62 L330 98 L400 70 V250 H0Z" fill="#B06A33"/>
+    <path d="M0 132 L72 98 L158 130 L240 94 L324 128 L400 104 V250 H0Z" fill="#92491F"/>
+    <path d="M0 162 L88 128 L176 160 L268 124 L356 158 L400 142 V250 H0Z" fill="#6E3215"/>
+    <path d="M0 192 L96 166 L198 194 L300 164 L400 188 V250 H0Z" fill="#4A2010"/>
+    <path d="M0 212 L400 212 V250 H0Z" fill="#2E4552"/>
+    <path d="M0 224 q50 -7 100 0 t100 0 t100 0 t100 0" stroke="#3E5A69" stroke-width="2" fill="none"/>
+    <path d="M0 238 q60 -7 120 0 t120 0 t160 0" stroke="#375161" stroke-width="2" fill="none"/>
+  </svg></div><figcaption><b>Charlevoix</b>Reached by a seasonal train hugging 125 km of the St Lawrence shore.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="qc-tadoussac"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Whale surfacing in a fjord between steep cliffs">
+    <defs><linearGradient id="qc3s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FAFB5"/><stop offset="1" stop-color="#3F5560"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#qc3s)"/>
+    <path d="M0 52 L58 36 L104 92 L132 120 H0Z" fill="#4C3A2E"/>
+    <path d="M400 44 L336 30 L288 88 L256 120 H400Z" fill="#43332A"/>
+    <path d="M0 78 L48 64 L92 110 L120 132 H0Z" fill="#5E4838"/>
+    <path d="M400 70 L344 58 L300 104 L272 132 H400Z" fill="#564132"/>
+    <path d="M0 126 L400 126 V250 H0Z" fill="#2C414C"/>
+    <path d="M118 196 c22-28 76-30 102-4 -30-8-62-6-102 4Z" fill="#131F26"/>
+    <path d="M196 188 c14-6 30-4 40 6 -14 0-28 0-40-6Z" fill="#0D171D"/>
+    <ellipse cx="172" cy="200" rx="72" ry="8" fill="#20323C" opacity=".8"/>
+    <path d="M144 170 q6 -26 2 -36 q10 12 14 36Z" fill="#E4EBEE" opacity=".5"/>
+    <path d="M282 178 h44 l-7 12 h-30Z" fill="#E7EDEF"/>
+    <rect x="296" y="166" width="18" height="12" fill="#CBD6DA"/>
+    <path d="M0 220 q60 -8 120 0 t140 0 t140 0" stroke="#3B5666" stroke-width="2" fill="none" opacity=".7"/>
+  </svg></div><figcaption><b>Tadoussac</b>Where the Saguenay fjord meets the St Lawrence. Belugas, fins, humpbacks, minkes.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="qc-montmorency"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tall waterfall with a suspension bridge across the top">
+    <defs><linearGradient id="qc4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9D6D4"/><stop offset="1" stop-color="#6E8582"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#qc4s)"/>
+    <path d="M0 86 L96 74 L148 92 V250 H0Z" fill="#3E3028"/>
+    <path d="M400 80 L300 70 L252 90 V250 H400Z" fill="#372A22"/>
+    <rect x="148" y="90" width="104" height="128" fill="#EEF3F2" opacity=".92"/>
+    <g fill="#D4E0DE" opacity=".8">
+      <rect x="158" y="90" width="6" height="128"/><rect x="178" y="90" width="5" height="128"/>
+      <rect x="200" y="90" width="7" height="128"/><rect x="224" y="90" width="5" height="128"/>
+      <rect x="240" y="90" width="6" height="128"/>
+    </g>
+    <ellipse cx="200" cy="222" rx="72" ry="20" fill="#F2F6F5" opacity=".75"/>
+    <ellipse cx="200" cy="228" rx="100" ry="18" fill="#DCE6E4" opacity=".6"/>
+    <path d="M96 78 q104 -26 208 0" stroke="#2A2018" stroke-width="3" fill="none"/>
+    <rect x="96" y="76" width="208" height="5" fill="#4A3A2E"/>
+    <g stroke="#2A2018" stroke-width="2">
+      <path d="M124 70 v8"/><path d="M152 65 v13"/><path d="M180 62 v16"/>
+      <path d="M208 62 v16"/><path d="M236 65 v13"/><path d="M264 70 v8"/>
+    </g>
+    <g opacity=".45" fill="#F6FAF9">
+      <path d="M150 198 c-10-16 4-26 0-40 10 12 4 26 8 40Z"/>
+      <path d="M248 192 c-8-14 4-24 0-36 10 10 4 24 8 36Z"/>
+    </g>
+  </svg></div><figcaption><b>Montmorency Falls</b>83 m, thirty taller than Niagara. City bus 800, about CAD 3.50.</figcaption></figure>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="flag">🇨🇦</span>
+    <h2>Québec, by rail and coach</h2>
+    <p class="lede">A walled French city, October forest, and whales at a fjord mouth — assembled into one of the few Canadian routes that works with no car at all.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Length</dt><dd>10 or 14 days</dd></div>
+      <div class="fact"><dt>Flight from Berlin</dt><dd>9–11 h, 1 stop</dd></div>
+      <div class="fact"><dt>Bases</dt><dd>Two to six</dd></div>
+      <div class="fact"><dt>Tipping</dt><dd>15–20 %, expected</dd></div>
+      <div class="fact"><dt>Tax shown</dt><dd>Added at the till</dd></div>
+    </dl>
+  </header>
+
+  <section class="block">
+    <h3>How hard to push it</h3>
+    <p class="note">The short version drops the seasonal legs entirely, which also removes your dependence on a train and a whale fleet that both stop running in October.</p>
+    <div class="levels" role="group" aria-label="Trip intensity, Québec">
+      <button class="lv" data-g="qc" data-l="s" aria-pressed="false">Simplified<small>10 days, 2 bases</small></button>
+      <button class="lv" data-g="qc" data-l="n" aria-pressed="true">Normal<small>14 days, 4 bases</small></button>
+      <button class="lv" data-g="qc" data-l="t" aria-pressed="false">Tight<small>14 days, 6 bases</small></button>
+    </div>
+
+    <div data-p="qc-s" hidden>
+      <div class="lvl-meta"><span>10 days</span><span><b>≈ €2,700</b></span><span>€270 a day</span><span>2 bases</span></div>
+      <ol class="legs">
+        <li><span class="nm">Montréal</span><span class="ni">4 nights</span><span class="ds">Front-load for jetlag. Old Montréal, Jean-Talon market, Mont Royal. Full metro, walkable, best food value of the trip.</span><span class="tr">Fly into YUL</span></li>
+        <li><span class="nm">Québec City</span><span class="ni">5 nights</span><span class="ds">The walled old town, the funicular, Petit-Champlain. Day trips to Montmorency Falls by bus 800, the Lévis ferry, Sainte-Anne-de-Beaupré.</span><span class="tr">VIA Rail, 3 h 15</span></li>
+      </ol>
+      <div class="pick"><p>No Charlevoix, no Tadoussac — so no seasonal dependency at all. This version works from June right through to late October, and in winter too. It's the safe pick if your dates can't be pinned down yet.</p></div>
+    </div>
+
+    <div data-p="qc-n">
+      <div class="lvl-meta"><span>14 days</span><span><b>≈ €3,750</b></span><span>€268 a day</span><span>4 bases</span></div>
+      <ol class="legs">
+        <li><span class="nm">Montréal</span><span class="ni">3 nights</span><span class="ds">Jetlag recovery and the urban half. You'll be useless on day one regardless.</span><span class="tr">Fly into YUL</span></li>
+        <li><span class="nm">Québec City</span><span class="ni">5 nights</span><span class="ds">The anchor. Five nights sounds generous for a small city but three of those days are excursions.</span><span class="tr">VIA Rail, 3 h 15</span></li>
+        <li><span class="nm">Baie-Saint-Paul</span><span class="ni">2 nights</span><span class="ds">A working artists' colony in Charlevoix. Galleries, hills, river. Your decompression stop.</span><span class="tr">Train de Charlevoix, scenic</span></li>
+        <li><span class="nm">Tadoussac</span><span class="ni">2 nights</span><span class="ds">The payoff. Upwelling at the fjord mouth draws one of the densest whale concentrations anywhere, with naturalists aboard.</span><span class="tr">Intercar coach</span></li>
+        <li><span class="nm">Montréal</span><span class="ni">1 night</span><span class="ds">Buffer night before flying out. Don't attempt Tadoussac to the airport in one day.</span><span class="tr">Coach then VIA, long day</span></li>
+      </ol>
+    </div>
+
+    <div data-p="qc-t" hidden>
+      <div class="lvl-meta"><span>14 days</span><span><b>≈ €3,980</b></span><span>€284 a day</span><span>6 bases</span></div>
+      <ol class="legs">
+        <li><span class="nm">Montréal</span><span class="ni">2 nights</span><span class="tr">Fly into YUL</span></li>
+        <li><span class="nm">Ottawa</span><span class="ni">2 nights</span><span class="ds">Parliament Hill, the National Gallery, the Canadian Museum of History across the river. Walkable downtown.</span><span class="tr">VIA Rail, 2 h</span></li>
+        <li><span class="nm">Québec City</span><span class="ni">4 nights</span><span class="ds">Tighter than I'd like, but workable if you skip Sainte-Anne-de-Beaupré.</span><span class="tr">VIA via Montréal, 5 h</span></li>
+        <li><span class="nm">Baie-Saint-Paul</span><span class="ni">2 nights</span><span class="tr">Train de Charlevoix</span></li>
+        <li><span class="nm">Tadoussac</span><span class="ni">2 nights</span><span class="tr">Intercar coach</span></li>
+        <li><span class="nm">Montréal</span><span class="ni">1 night</span><span class="tr">Coach then VIA</span></li>
+      </ol>
+      <div class="warn"><p><b>Ottawa costs you four hours of train for two nights,</b> and it's the least distinctive stop on the list. I'd take the Normal version and spend the difference on a better hotel in Québec City.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Which season, and what each one is like</h3>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col"></th><th scope="col">Winter, Dec–Feb</th><th scope="col">Spring, Mar–May</th><th scope="col">Summer, Jun–Aug</th><th scope="col">Autumn, Sep–Nov</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Québec City</th><td>−5 °C day, −18 °C night, windchill to −30 °C</td><td>March still winter, May 17–19 °C</td><td>23–26 °C, humid</td><td>Sep 18–20 °C, Oct 12–15 °C, Nov 5 °C</td></tr>
+        <tr><th scope="row">Montréal</th><td>−2 °C, −12 °C</td><td>Similar, milder</td><td>25–30 °C, humid</td><td>Same curve, about 2 °C warmer</td></tr>
+        <tr><th scope="row">Tourists</th><td>Moderate, spikes for Carnaval</td><td>Lowest of the year</td><td>Peak, festivals and cruise ships</td><td>High Sep–Oct, foliage is their high season. Low in Nov</td></tr>
+        <tr><th scope="row">Hotels</th><td>Low except Carnaval and New Year</td><td>Cheapest</td><td>Highest, especially July</td><td>Elevated Sep–Oct, drops sharply in Nov</td></tr>
+        <tr><th scope="row">Route works?</th><td>No</td><td>Not until June</td><td>Yes</td><td>Yes, until mid-October</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="pick">
+      <p><b>The window is 22 September to 12 October.</b> Three things have to overlap and they only do once a year: the Train de Charlevoix runs June to October, whale season peaks August to October, and foliage lands late September to mid-October.</p>
+      <p>Tadoussac is a seasonal village. Much of it closes after mid-October.</p>
+    </div>
+
+    <h4>The detail that should change your route</h4>
+    <p class="note">Foliage peaks north to south — Charlevoix and Saguenay in the last week of September, Québec City in early-to-mid October, Montréal mid-to-late October. The Normal itinerary travels <i>northeast</i>, which runs against the colour, so you'd reach Charlevoix after its peak.</p>
+    <p class="note">Fix it by <b>arriving around 25 September</b>, which threads Charlevoix correctly in the first week of October. Montréal being pre-peak doesn't matter; it isn't a foliage destination.</p>
+
+    <div class="warn">
+      <p><b>Avoid 9–11 October.</b> Canadian Thanksgiving falls on Monday 11 October 2027 — the biggest domestic travel weekend of the autumn.</p>
+      <p>Charlevoix and Tadoussac are exactly where Québécois go for it. Small inventory, fills completely, prices jump. Either be in a city that weekend or book the rural legs many months ahead.</p>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Getting there and getting around</h3>
+    <div class="split">
+      <div>
+        <h4>Flights</h4>
+        <p class="note">Usually one stop to Montréal, around €450–750 in October shoulder season. Fly into YUL; it has the most options and the cheapest fares.</p>
+        <h4>Entry</h4>
+        <p class="note">As a German citizen you need an <b>eTA</b> before boarding — CAD 7, applied online, usually approved in minutes, valid five years. Don't leave it to the airport.</p>
+      </div>
+      <div>
+        <h4>Trains and coaches</h4>
+        <ul class="plain">
+          <li><b>VIA Rail Corridor</b> — Montréal to Québec City 3 h 15, Montréal to Ottawa 2 h, Toronto to Montréal 5 h</li>
+          <li><b>Train de Charlevoix</b> — Québec City area to Baie-Saint-Paul and La Malbaie, June to October only, 125 km of shoreline</li>
+          <li><b>Intercar coach</b> — La Malbaie or Québec City to Tadoussac</li>
+          <li><b>Bus 800</b> — downtown Québec to Montmorency Falls, about CAD 3.50, 35–40 min</li>
+          <li><b>Funicular</b> — upper to lower town, CAD 3.50</li>
+          <li><b>Lévis ferry</b> — a few dollars, ten minutes, the best skyline view there is</li>
+        </ul>
+      </div>
+    </div>
+    <div class="warn"><p><b>One fare caution.</b> The Train de Charlevoix changed operator in 2026 and travellers report one-way fares are no longer clearly published, which pushes people into pricier returns. Check before you commit.</p></div>
+  </section>
+
+  <section class="block">
+    <h3>What it costs</h3>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col">Item</th><th scope="col">Simplified, 10 d</th><th scope="col">Normal, 14 d</th><th scope="col">Tight, 14 d</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Flights</th><td class="num">€500</td><td class="num">€500</td><td class="num">€500</td></tr>
+        <tr><th scope="row">Hotels incl. ~18.5 % tax</th><td class="num">€1,280</td><td class="num">€1,780</td><td class="num">€1,890</td></tr>
+        <tr><th scope="row">Food incl. tax and tip</th><td class="num">€520</td><td class="num">€770</td><td class="num">€790</td></tr>
+        <tr><th scope="row">Trains, coaches, transit</th><td class="num">€120</td><td class="num">€280</td><td class="num">€360</td></tr>
+        <tr><th scope="row">Whale cruise and entries</th><td class="num">€80</td><td class="num">€220</td><td class="num">€240</td></tr>
+        <tr><th scope="row">Buffer</th><td class="num">€200</td><td class="num">€200</td><td class="num">€200</td></tr>
+        <tr class="total"><th scope="row">Total</th><td class="num">€2,700</td><td class="num">€3,750</td><td class="num">€3,980</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Nightly hotel rates</h4>
+    <ul class="plain">
+      <li><b>Montréal</b> €120–200 · <b>Québec City</b> €130–220 · <b>Baie-Saint-Paul</b> €130 · <b>Tadoussac</b> €120</li>
+    </ul>
+
+    <div class="warn">
+      <p><b>Two traps that catch Europeans.</b></p>
+      <p><b>Tax is added at the register, never shown on the price.</b> Québec stacks GST 5 % plus QST 9.975 % plus a 3.5 % lodging tax — about 18.5 % on a room. Ontario is 13 % HST.</p>
+      <p><b>Tipping 15–20 % is expected, not optional.</b> Together these turn a CAD 25 menu item into roughly CAD 34. Budget for it or you'll feel ambushed daily.</p>
+    </div>
+
+    <h4>Two levers if you want it cheaper</h4>
+    <ul class="plain">
+      <li><b>Auberges in the small towns.</b> Baie-Saint-Paul and Tadoussac both have good ones at CAD 110–140 rather than hotel rates.</li>
+      <li><b>Apportez votre vin.</b> Montréal restaurants where you bring your own bottle. Takes a real bite out of dinner.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>Why no Toronto</h3>
+    <p class="note">Good transit, very safe, genuinely great food diversity — and not magical. It's a competent large North American city and nothing in it will give you the feeling you're chasing. Its one real asset is access to Niagara Falls, and Montmorency already covers "dramatic waterfall".</p>
+    <p class="note">Going <i>northeast</i> instead of southwest buys you Charlevoix and Tadoussac: the part of Québec that earns the transatlantic flight, and among the very few pieces of Canadian wilderness reachable without driving.</p>
+  </section>
+
+  <section class="block">
+    <h3>If you'd rather have winter</h3>
+    <p class="note">Carnaval de Québec and the Hôtel de Glace run late January to early March. Spectacular, and closer in spirit to what Iceland gave you — but understand it's <b>a different trip, not a different date</b>. No Charlevoix train, no whales, no Tadoussac. Montréal and Québec City only, about 8–9 days rather than 14, at −15 °C to −25 °C.</p>
+    <p class="note">That's continental cold, far harsher than Iceland's maritime cold. Different category of commitment.</p>
+  </section>
+</div>
+</div>
+
+<!-- ══════════════════════════ KOREA ══════════════════════════ -->
+<div id="p-korea" role="tabpanel" aria-labelledby="t-korea" hidden>
+
+<div class="strip">
+  <figure class="scene"><div class="shot" data-shot="kr-gyeongju"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grass-covered royal burial mounds under a moon">
+    <defs><linearGradient id="kr1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1E2740"/><stop offset="1" stop-color="#55637A"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#kr1s)"/>
+    <circle cx="316" cy="54" r="23" fill="#F0EDE2" opacity=".85"/>
+    <circle cx="306" cy="48" r="20" fill="#1E2740" opacity=".55"/>
+    <g fill="#E8E4D6" opacity=".5">
+      <circle cx="62" cy="42" r="1.6"/><circle cx="128" cy="68" r="1.3"/><circle cx="196" cy="36" r="1.5"/>
+      <circle cx="240" cy="82" r="1.2"/><circle cx="92" cy="96" r="1.3"/><circle cx="366" cy="104" r="1.4"/>
+    </g>
+    <path d="M0 150 q46 -44 96 0Z" fill="#3B4F42"/>
+    <path d="M62 168 q62 -58 128 0Z" fill="#46604E"/>
+    <path d="M186 160 q50 -48 104 0Z" fill="#3E5546"/>
+    <path d="M268 172 q58 -54 122 0Z" fill="#4C6853"/>
+    <path d="M0 176 q40 -36 84 0Z" fill="#54735C"/>
+    <path d="M96 190 q70 -62 142 0Z" fill="#5C7F64"/>
+    <path d="M232 194 q64 -56 132 0Z" fill="#53755C"/>
+    <rect y="188" width="400" height="62" fill="#2C3A30"/>
+    <path d="M0 200 q100 -10 200 0 t200 0" stroke="#3C4F40" stroke-width="2" fill="none"/>
+  </svg></div><figcaption><b>Gyeongju</b>Donggung Palace mirrored in Wolji Pond at blue hour, and royal tomb mounds in the middle of the city.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="kr-hanok"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Layered curved tile rooflines of traditional houses">
+    <defs><linearGradient id="kr2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9CFD8"/><stop offset="1" stop-color="#6B7482"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#kr2s)"/>
+    <circle cx="80" cy="50" r="18" fill="#F3F1E8" opacity=".5"/>
+    <g fill="#39404C">
+      <path d="M-10 118 q104 -40 206 0 q-104 -16 -206 0Z"/>
+      <path d="M-10 118 h206 v10 h-206Z"/>
+    </g>
+    <g fill="#4A5260">
+      <path d="M186 146 q110 -42 220 0 q-110 -17 -220 0Z"/>
+      <path d="M186 146 h220 v10 h-220Z"/>
+    </g>
+    <g fill="#2E343E">
+      <path d="M30 182 q116 -44 232 0 q-116 -18 -232 0Z"/>
+      <path d="M30 182 h232 v11 h-232Z"/>
+    </g>
+    <g fill="#E8E2D4">
+      <rect x="54" y="193" width="186" height="40"/>
+    </g>
+    <g fill="#6F5B42">
+      <rect x="66" y="200" width="34" height="33"/><rect x="112" y="200" width="34" height="33"/>
+      <rect x="158" y="200" width="34" height="33"/><rect x="204" y="200" width="28" height="33"/>
+    </g>
+    <g stroke="#D8CFBB" stroke-width="1.4">
+      <path d="M83 200 v33"/><path d="M129 200 v33"/><path d="M175 200 v33"/>
+      <path d="M66 216 h166"/>
+    </g>
+    <rect y="233" width="400" height="17" fill="#2A2F38"/>
+  </svg></div><figcaption><b>Jeonju and Andong</b>Hanok roofs, Confucian academies, and Korea's hanji paper capital.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="kr-calligraphy"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A calligraphy brush, ink stone and a single ink stroke on paper">
+    <defs><linearGradient id="kr3s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EFEADC"/><stop offset="1" stop-color="#D5CDB8"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#kr3s)"/>
+    <path d="M96 56 c44 10 70 48 62 92 -8 44-48 70-92 62 36-6 58-26 64-58 8-42-12-78-34-96Z" fill="#1B1F26"/>
+    <path d="M118 180 c42-6 76 10 96 38 -34-18-70-24-96-38Z" fill="#1B1F26" opacity=".9"/>
+    <g transform="rotate(-24 300 120)">
+      <rect x="292" y="40" width="13" height="104" rx="6" fill="#5C4328"/>
+      <rect x="290" y="140" width="17" height="14" rx="3" fill="#C8A06A"/>
+      <path d="M298.5 152 c13 14 15 42 0 66 -15-24-13-52 0-66Z" fill="#23272E"/>
+      <rect x="294" y="34" width="9" height="12" rx="4" fill="#8C6B3F"/>
+    </g>
+    <ellipse cx="94" cy="214" rx="54" ry="18" fill="#3B3F46"/>
+    <ellipse cx="94" cy="211" rx="44" ry="13" fill="#15181D"/>
+    <ellipse cx="94" cy="210" rx="30" ry="8" fill="#0A0C0F"/>
+    <rect x="236" y="196" width="40" height="40" rx="3" fill="#A33B33"/>
+    <g fill="#EFEADC">
+      <rect x="244" y="204" width="8" height="24"/><rect x="258" y="204" width="8" height="10"/>
+      <rect x="258" y="218" width="8" height="10"/>
+    </g>
+  </svg></div><figcaption><b>Seoul</b>The Calligraphy Art Museum at Seoul Arts Center, and Insadong's brush and hanji shops.</figcaption></figure>
+
+  <figure class="scene"><div class="shot" data-shot="kr-haeinsa"><svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Racks of wooden printing blocks in a temple hall">
+    <defs><linearGradient id="kr4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2E20"/><stop offset="1" stop-color="#7A6446"/></linearGradient></defs>
+    <rect width="400" height="250" fill="url(#kr4s)"/>
+    <rect x="14" y="26" width="372" height="12" fill="#2A2116"/>
+    <g>
+      <rect x="20" y="46" width="360" height="56" fill="#271E14"/>
+      <rect x="20" y="114" width="360" height="56" fill="#271E14"/>
+      <rect x="20" y="182" width="360" height="56" fill="#271E14"/>
+    </g>
+    <g fill="#B2905E">
+      <rect x="28" y="52" width="13" height="44"/><rect x="46" y="52" width="13" height="44"/>
+      <rect x="64" y="52" width="13" height="44"/><rect x="82" y="52" width="13" height="44"/>
+      <rect x="100" y="52" width="13" height="44"/><rect x="118" y="52" width="13" height="44"/>
+      <rect x="136" y="52" width="13" height="44"/><rect x="154" y="52" width="13" height="44"/>
+      <rect x="172" y="52" width="13" height="44"/><rect x="190" y="52" width="13" height="44"/>
+      <rect x="208" y="52" width="13" height="44"/><rect x="226" y="52" width="13" height="44"/>
+      <rect x="244" y="52" width="13" height="44"/><rect x="262" y="52" width="13" height="44"/>
+      <rect x="280" y="52" width="13" height="44"/><rect x="298" y="52" width="13" height="44"/>
+      <rect x="316" y="52" width="13" height="44"/><rect x="334" y="52" width="13" height="44"/>
+      <rect x="352" y="52" width="13" height="44"/>
+    </g>
+    <g fill="#A3824F">
+      <rect x="28" y="120" width="13" height="44"/><rect x="46" y="120" width="13" height="44"/>
+      <rect x="64" y="120" width="13" height="44"/><rect x="82" y="120" width="13" height="44"/>
+      <rect x="100" y="120" width="13" height="44"/><rect x="118" y="120" width="13" height="44"/>
+      <rect x="136" y="120" width="13" height="44"/><rect x="154" y="120" width="13" height="44"/>
+      <rect x="172" y="120" width="13" height="44"/><rect x="190" y="120" width="13" height="44"/>
+      <rect x="208" y="120" width="13" height="44"/><rect x="226" y="120" width="13" height="44"/>
+      <rect x="244" y="120" width="13" height="44"/><rect x="262" y="120" width="13" height="44"/>
+      <rect x="280" y="120" width="13" height="44"/><rect x="298" y="120" width="13" height="44"/>
+      <rect x="316" y="120" width="13" height="44"/><rect x="334" y="120" width="13" height="44"/>
+      <rect x="352" y="120" width="13" height="44"/>
+    </g>
+    <g fill="#8E7044">
+      <rect x="28" y="188" width="13" height="44"/><rect x="46" y="188" width="13" height="44"/>
+      <rect x="64" y="188" width="13" height="44"/><rect x="82" y="188" width="13" height="44"/>
+      <rect x="100" y="188" width="13" height="44"/><rect x="118" y="188" width="13" height="44"/>
+      <rect x="136" y="188" width="13" height="44"/><rect x="154" y="188" width="13" height="44"/>
+      <rect x="172" y="188" width="13" height="44"/><rect x="190" y="188" width="13" height="44"/>
+      <rect x="208" y="188" width="13" height="44"/><rect x="226" y="188" width="13" height="44"/>
+      <rect x="244" y="188" width="13" height="44"/><rect x="262" y="188" width="13" height="44"/>
+      <rect x="280" y="188" width="13" height="44"/><rect x="298" y="188" width="13" height="44"/>
+      <rect x="316" y="188" width="13" height="44"/><rect x="334" y="188" width="13" height="44"/>
+      <rect x="352" y="188" width="13" height="44"/>
+    </g>
+    <g opacity=".3" fill="#2A2116">
+      <rect x="20" y="96" width="360" height="8"/><rect x="20" y="164" width="360" height="8"/>
+    </g>
+  </svg></div><figcaption><b>Haeinsa</b>The Tripitaka Koreana — 80,000 woodblocks carved between 1237 and 1248, still intact.</figcaption></figure>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="flag">🇰🇷</span>
+    <h2>South Korea, a clockwise loop</h2>
+    <p class="lede">The only option here that engages something you actually practise. Best public transport of the three by a distance, and the cheapest per day.</p>
+    <dl class="facts">
+      <div class="fact"><dt>Length</dt><dd>10 or 14 days</dd></div>
+      <div class="fact"><dt>Flight from Berlin</dt><dd>13–15 h, 1 stop</dd></div>
+      <div class="fact"><dt>Bases</dt><dd>Three to seven</dd></div>
+      <div class="fact"><dt>Tipping</dt><dd>None, anywhere</dd></div>
+      <div class="fact"><dt>Tax shown</dt><dd>Included</dd></div>
+    </dl>
+  </header>
+
+  <section class="block">
+    <h3>How hard to push it</h3>
+    <p class="note">All three versions are built around the Biennale in Jeonju. Until the 2027 dates are published, treat the rest as provisional.</p>
+    <div class="levels" role="group" aria-label="Trip intensity, South Korea">
+      <button class="lv" data-g="kr" data-l="s" aria-pressed="false">Simplified<small>10 days, 3 bases</small></button>
+      <button class="lv" data-g="kr" data-l="n" aria-pressed="true">Normal<small>14 days, 5 bases</small></button>
+      <button class="lv" data-g="kr" data-l="t" aria-pressed="false">Tight<small>14 days, 6 bases</small></button>
+    </div>
+
+    <div data-p="kr-s" hidden>
+      <div class="lvl-meta"><span>10 days</span><span><b>≈ €2,300</b></span><span>€230 a day</span><span>3 bases</span></div>
+      <ol class="legs">
+        <li><span class="nm">Seoul</span><span class="ni">5 nights</span><span class="ds">Calligraphy Art Museum at Seoul Arts Center, Insadong for brushes, hanji and seal carving, Jongmyo and Changdeokgung. Suwon Hwaseong as a subway day trip.</span><span class="tr">Fly into ICN</span></li>
+        <li><span class="nm">Jeonju</span><span class="ni">2 nights</span><span class="ds">The Biennale, plus the hanji mills and museum. Korea's paper is made here — go as a practitioner this time, not a tourist.</span><span class="tr">KTX, 1 h 40</span></li>
+        <li><span class="nm">Gyeongju</span><span class="ni">2 nights</span><span class="ds">Royal tumuli, Bulguksa, Wolji pond floodlit at night. Compressed, but the essentials fit.</span><span class="tr">Coach via Daegu, ~4 h</span></li>
+      </ol>
+      <div class="pick"><p>Drops Haeinsa and Andong. The calmest version, and the one I'd pick if you want rest days rather than coverage.</p></div>
+    </div>
+
+    <div data-p="kr-n">
+      <div class="lvl-meta"><span>14 days</span><span><b>≈ €2,820</b></span><span>€201 a day</span><span>5 bases</span></div>
+      <ol class="legs">
+        <li><span class="nm">Seoul</span><span class="ni">4 nights</span><span class="ds">The calligraphy core. Seoul Calligraphy Art Museum, Insadong, the Hangeul Museum, Jongmyo, Changdeokgung's Secret Garden. Suwon Hwaseong by subway.</span><span class="tr">Fly into ICN</span></li>
+        <li><span class="nm">Jeonju</span><span class="ni">2 nights</span><span class="ds">Biennale at the Sori Arts Center and Jeonbuk Arts Center, with events across the province. Plus hanji.</span><span class="tr">KTX, 1 h 40</span></li>
+        <li><span class="nm">Daegu</span><span class="ni">1 night</span><span class="ds">Exists for one reason: Haeinsa. Book the close-up woodblock tour online. Also breaks what would be a brutal Jeonju–Gyeongju transfer.</span><span class="tr">Intercity coach, ~3 h</span></li>
+        <li><span class="nm">Gyeongju</span><span class="ni">3 nights</span><span class="ds">Daereungwon, Cheonmachong, Bulguksa, Seokguram, the National Museum's Silla gold, Namsan's hillside Buddhas, Wolji pond at night.</span><span class="tr">KTX or coach, ~1 h</span></li>
+        <li><span class="nm">Andong</span><span class="ni">2 nights</span><span class="ds">Hahoe Folk Village and the Confucian academies at Dosan and Byeongsan. The heartland of Korean brush-and-ink scholarship.</span><span class="tr">Coach, ~2 h</span></li>
+        <li><span class="nm">Seoul</span><span class="ni">1 night</span><span class="ds">Final night before flying out.</span><span class="tr">KTX-Eum, ~2 h</span></li>
+      </ol>
+      <div class="warn"><p><b>Andong's local buses are infrequent.</b> The 210 reaches Hahoe in about thirty minutes, but check the timetable and plan around it rather than assuming. It's the one place in this loop where transport takes real planning.</p></div>
+    </div>
+
+    <div data-p="kr-t" hidden>
+      <div class="lvl-meta"><span>14 days</span><span><b>≈ €3,080</b></span><span>€220 a day</span><span>6 bases</span></div>
+      <ol class="legs">
+        <li><span class="nm">Seoul</span><span class="ni">3 nights</span><span class="ds">Same calligraphy circuit, compressed. Suwon becomes a half day.</span><span class="tr">Fly into ICN</span></li>
+        <li><span class="nm">Jeonju</span><span class="ni">2 nights</span><span class="tr">KTX, 1 h 40</span></li>
+        <li><span class="nm">Daegu</span><span class="ni">1 night</span><span class="ds">Haeinsa, plus Seomun Market and the Yangnyeongsi herbal medicine quarter.</span><span class="tr">Coach, ~3 h</span></li>
+        <li><span class="nm">Gyeongju</span><span class="ni">3 nights</span><span class="tr">KTX or coach, ~1 h</span></li>
+        <li><span class="nm">Andong</span><span class="ni">2 nights</span><span class="tr">Coach, ~2 h</span></li>
+        <li><span class="nm">Sokcho and Seoraksan</span><span class="ni">2 nights</span><span class="ds">Mid-October foliage in the mountains, and a direct coach from Sokcho to Incheon Airport at the end.</span><span class="tr">Awkward leg, 4–5 h via Wonju or Seoul</span></li>
+      </ol>
+      <div class="warn"><p><b>The Andong to Sokcho leg is the weak point</b> — there's no clean connection and you'll lose most of a day to it. Worth it only if autumn mountains matter to you more than an unhurried Seoul.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>Which season — and your two constraints rule out most of the year</h3>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col">Period</th><th scope="col">What happens</th><th scope="col">Verdict</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Mar–May</th><td>Yellow dust season, worst in March and April</td><td>Rules out spring entirely for you</td></tr>
+        <tr><th scope="row">Late Jun–late Jul</th><td><i>Jangma</i> monsoon, sustained heavy rain</td><td>No</td></tr>
+        <tr><th scope="row">Jul–Aug</th><td>30–35 °C with punishing humidity</td><td>No</td></tr>
+        <tr><th scope="row">Aug–Sep</th><td>Typhoon peak</td><td>Risky until mid-September</td></tr>
+        <tr><th scope="row">October</th><td>15–22 °C, dry, clear skies, cleanest air of the year, foliage from mid-month</td><td><b>Go now</b></td></tr>
+        <tr><th scope="row">November</th><td>Cold but crisp, very clean air, cheaper</td><td>Workable, colder</td></tr>
+        <tr><th scope="row">Dec–Feb</th><td>Cold, and high fine-dust readings</td><td>No</td></tr>
+      </tbody>
+    </table></div>
+    <div class="pick"><p>October is both the only month that clears your constraints <b>and</b> Korea's best month anyway. That's a rare alignment — take it.</p></div>
+  </section>
+
+  <section class="block">
+    <h3>The Biennale</h3>
+    <p class="note">The Jeonbuk World Seoye Biennale runs in <b>odd-numbered years, in autumn</b>. The organiser's own record is consistent:</p>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col">Edition</th><th scope="col">Year</th><th scope="col">Dates</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">12th</th><td>2019</td><td>12 October – 10 November</td></tr>
+        <tr><th scope="row">14th</th><td>2023</td><td>22 September – 22 October</td></tr>
+        <tr><th scope="row">15th</th><td>2025</td><td>26 September – 26 October, free admission</td></tr>
+        <tr><th scope="row">16th</th><td><b>2027</b></td><td>Expected late September to late October</td></tr>
+      </tbody>
+    </table></div>
+    <p class="note">Based at the Sori Arts Center of Korea and the Jeonbuk Arts Center, with events spread across fourteen cities and counties. Dates land inside your weather window — an unusually clean alignment.</p>
+    <div class="pick"><p><b>Watch biennale.or.kr.</b> Jeonju's two nights have to sit inside the festival window, and the whole loop is built around that.</p></div>
+
+    <h4>Also in October</h4>
+    <p class="note"><b>Hangeul Day, 9 October</b> — a national holiday for the alphabet itself, with exhibitions around it. If your dates include it, be in Seoul.</p>
+  </section>
+
+  <section class="block">
+    <h3>Getting there and getting around</h3>
+    <div class="split">
+      <div>
+        <h4>Flights</h4>
+        <p class="note">No direct route from Berlin. One stop via Istanbul, Frankfurt, Munich, Helsinki, Zurich or Doha. Budget €600–850 return in October, 13–15 hours door to door.</p>
+        <h4>Entry</h4>
+        <p class="note">The <b>K-ETA exemption for German citizens ends 31 December 2026</b>. From 1 January 2027 it is mandatory again for all visa-free nationalities. ₩10,000, roughly €6.50, at k-eta.go.kr, approved before boarding.</p>
+        <p class="note">Another extension is plausible — it's been extended before — and any announcement would come around November 2026. Assume you need it.</p>
+      </div>
+      <div>
+        <h4>Rail and coach</h4>
+        <ul class="plain">
+          <li><b>T-money card</b> — works nationwide, on everything</li>
+          <li><b>Seoul to Jeonju</b> — KTX, about 1 h 40</li>
+          <li><b>Jeonju to Daegu</b> — intercity coach, about 3 h</li>
+          <li><b>Daegu to Gyeongju</b> — KTX or coach, about 1 h</li>
+          <li><b>Daegu to Haeinsa</b> — coach from Seobu terminal, about 1 h 30</li>
+          <li><b>Gyeongju to Andong</b> — coach, about 2 h</li>
+          <li><b>Andong to Seoul</b> — KTX-Eum, about 2 h</li>
+          <li><b>Hahoe</b> — local bus 210 from Andong, about 30 min, infrequent</li>
+        </ul>
+        <p class="note"><b>Skip the rail pass.</b> This itinerary has few long KTX legs and several coach segments. Point-to-point tickets come out cheaper.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h3>What it costs</h3>
+    <div class="scroller"><table>
+      <thead><tr><th scope="col">Item</th><th scope="col">Simplified, 10 d</th><th scope="col">Normal, 14 d</th><th scope="col">Tight, 14 d</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Flights</th><td class="num">€700</td><td class="num">€700</td><td class="num">€700</td></tr>
+        <tr><th scope="row">Hotels</th><td class="num">€850</td><td class="num">€1,200</td><td class="num">€1,290</td></tr>
+        <tr><th scope="row">Food</th><td class="num">€300</td><td class="num">€420</td><td class="num">€440</td></tr>
+        <tr><th scope="row">Rail, coach, local transit</th><td class="num">€130</td><td class="num">€180</td><td class="num">€290</td></tr>
+        <tr><th scope="row">Entries and activities</th><td class="num">€120</td><td class="num">€120</td><td class="num">€160</td></tr>
+        <tr><th scope="row">Buffer</th><td class="num">€200</td><td class="num">€200</td><td class="num">€200</td></tr>
+        <tr class="total"><th scope="row">Total</th><td class="num">€2,300</td><td class="num">€2,820</td><td class="num">€3,080</td></tr>
+      </tbody>
+    </table></div>
+
+    <h4>Nightly hotel rates</h4>
+    <ul class="plain">
+      <li><b>Seoul</b> €90–130 · <b>Jeonju</b> €70–100, hanok stays available · <b>Daegu</b> €70 · <b>Gyeongju</b> €80–110 · <b>Andong</b> €60–90</li>
+    </ul>
+
+    <h4>Money notes</h4>
+    <ul class="plain">
+      <li><b>No tipping, anywhere.</b> Not in restaurants, not in taxis. Attempting it causes confusion.</li>
+      <li><b>Tax is in the displayed price.</b></li>
+      <li><b>Meals cost €6–12.</b> This is the single biggest reason Korea beats Canada on daily spend.</li>
+      <li><b>Museum and palace entries</b> are typically ₩3,000–5,000. The Biennale was free in 2025.</li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h3>The calligraphy circuit</h3>
+    <div class="split">
+      <div>
+        <h4>Seoul</h4>
+        <ul class="plain">
+          <li><b>Seoul Calligraphy Art Museum</b> — at Seoul Arts Center, Seocho. Korea's dedicated <i>seoye</i> museum</li>
+          <li><b>Insadong</b> — the working end. Brushes, ink stones, hanji, seal carving. Get a 도장 made; it takes a day</li>
+          <li><b>National Hangeul Museum</b> — Yongsan. Check its current operating status before building a day around it</li>
+          <li><b>Jongmyo Shrine</b> and <b>Changdeokgung</b> for the Joseon context</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Beyond Seoul</h4>
+        <ul class="plain">
+          <li><b>Jeonju</b> — the Biennale, and the hanji mills. Korea's paper is made here</li>
+          <li><b>Haeinsa</b> — the Tripitaka Koreana. 80,000 woodblocks carved 1237–1248, in a hall whose ventilation engineering has preserved them for eight centuries. Probably the most meaningful object in the country for someone whose working life is typography</li>
+          <li><b>Andong</b> — Dosan and Byeongsan Seowon, the Confucian academies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <p>Costs are planning estimates for one traveller in October 2027, converted to euros at current rates. Hotel aggregator data for all three destinations is noisy and the sites contradict each other — treat the direction as reliable and the exact figures as indicative.</p>
+    <p class="exportbar"><button type="button" id="exportBtn">Copy photo config</button></p>
+    <p>Two things to watch before committing: <b>biennale.or.kr</b> for the 2027 Biennale dates, and any K-ETA extension announcement expected around November 2026.</p>
+  </footer>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   PHOTOS
+
+   You don't need to edit this by hand. Under every slide there's a
+   "Choose photo" button that searches Wikimedia Commons live and
+   lets you click the one you want. Your picks are remembered in
+   this browser.
+
+   Once you're happy, press "Copy photo config" at the bottom of the
+   page and paste the result over the PHOTOS block below. That bakes
+   your choices into the file so they work on any device.
+
+   Each value takes one of:
+     "commons:Some File.jpg"   a Wikimedia Commons file
+     "images/az-sete.jpg"      a file in an images/ folder
+     "https://…/photo.jpg"     any direct image URL
+     ""                        keep the drawn scene
+   ═══════════════════════════════════════════════════════════════ */
+
+var PHOTOS = {
+  'az-sete':         'commons:Lagoa das Sete Cidades, Miradouro da vista do Rei, Sete Cidades, Ponta Delgada, ilha de São Miguel, Açores.JPG',
+  'az-whale':        'commons:Whale (50683933816).jpg',
+  'az-furnas':       'commons:Parque Terra Nostra2.jpg',
+  'az-portas':       'commons:Portas da Cidade, Ponta Delgada, isla de San Miguel, Azores, Portugal, 2020-07-29, DD 123-125 HDR.jpg',
+
+  'qc-frontenac':    'commons:Québec city at night, view from Lévis city.jpg',
+  'qc-charlevoix':   'commons:Baie-Saint-Paul, Quebec 4.jpg',
+  'qc-tadoussac':    'commons:Minke whale near Tadoussac.jpg',
+  'qc-montmorency':  'commons:Chute Montmorency MAM.JPG',
+
+  'kr-gyeongju':     'commons:Water reflection of Donggung Palace in Wolji Pond at blue hour in Gyeongju South Korea.jpg',
+  'kr-hanok':        'commons:Jeonju Hanok Maeul 02.jpg',
+  'kr-calligraphy':  'commons:Seoul Calligraphy Art Museum 05.JPG',
+  'kr-haeinsa':      'commons:Haeinsa temple.jpg'
+};
+
+var EXTRA = { azores: [], quebec: [], korea: [] };
+
+/* Alt text per slide — describes the photo, not the drawing. */
+var ALT = {
+  'az-sete':         "The twin crater lakes of Sete Cidades seen from the Vista do Rei viewpoint, one green and one blue.",
+  'az-whale':        "A whale surfacing in open Atlantic water.",
+  'az-furnas':       "The iron-orange thermal pool at Terra Nostra Park in Furnas, ringed by subtropical planting.",
+  'az-portas':       "The three white stone arches of the Portas da Cidade in Ponta Delgada.",
+  'qc-frontenac':    "Québec City lit at night across the St Lawrence, seen from Lévis, the Château Frontenac on the skyline.",
+  'qc-charlevoix':   "The town of Baie-Saint-Paul set among the Charlevoix hills.",
+  'qc-tadoussac':    "A minke whale surfacing in the St Lawrence near Tadoussac.",
+  'qc-montmorency':  "Montmorency Falls dropping over the cliff towards the St Lawrence.",
+  'kr-gyeongju':     "Donggung Palace mirrored in Wolji Pond at blue hour, Gyeongju.",
+  'kr-hanok':        "Tiled rooflines of hanok houses in Jeonju Hanok Village.",
+  'kr-calligraphy':  "The Seoul Calligraphy Art Museum at the Seoul Arts Center.",
+  'kr-haeinsa':      "Haeinsa temple among the wooded slopes of Gayasan."
+};
+
+/* What each slide searches Commons for by default. */
+var FIND = {
+  'az-sete':        'Lagoa das Sete Cidades',
+  'az-whale':       'whale watching Azores',
+  'az-furnas':      'Terra Nostra Park Furnas',
+  'az-portas':      'Portas da Cidade Ponta Delgada',
+  'qc-frontenac':   'Château Frontenac Quebec',
+  'qc-charlevoix':  'Baie-Saint-Paul Charlevoix',
+  'qc-tadoussac':   'Tadoussac Saguenay',
+  'qc-montmorency': 'Montmorency Falls',
+  'kr-gyeongju':    'Daereungwon Gyeongju tumuli',
+  'kr-hanok':       'Jeonju Hanok Village',
+  'kr-calligraphy': 'Korean calligraphy',
+  'kr-haeinsa':     'Haeinsa Tripitaka Koreana'
+};
+
+var COMMONS_WIDTH = 1400;
+
+/* ─── nothing below here needs editing ─────────────────────────── */
+(function(){
+  var STORE = 'oct27.photos';
+  var picks = {};
+  try { picks = JSON.parse(localStorage.getItem(STORE) || '{}') || {}; } catch (e) {}
+
+  function save(){ try { localStorage.setItem(STORE, JSON.stringify(picks)); } catch (e) {} }
+  function value(k){ return Object.prototype.hasOwnProperty.call(picks,k) ? picks[k] : (PHOTOS[k] || ''); }
+
+  function resolve(v){
+    if (!v) return '';
+    if (v.slice(0,8) === 'commons:') {
+      var n = v.slice(8).trim().replace(/^File:/i,'').replace(/ /g,'_');
+      return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(n) + '?width=' + COMMONS_WIDTH;
+    }
+    return v;
+  }
+
+  function render(k){
+    var host = document.querySelector('[data-shot="' + k + '"]');
+    if (!host) return;
+    var fig = host.closest('figure');
+    var cap = fig && fig.querySelector('figcaption');
+    var old = host.querySelector('img'); if (old) old.remove();
+    var row = cap && cap.querySelector('.pickrow'); if (row) row.remove();
+    var svg = host.querySelector('svg');
+    if (svg) svg.removeAttribute('aria-hidden');
+
+    var src = resolve(value(k));
+    if (!src) { controls(k, cap, false); return; }
+
+    var img = new Image();
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.referrerPolicy = 'no-referrer';
+    img.alt = ALT[k] || (svg && svg.getAttribute('aria-label')) || '';
+    img.onload  = function(){ if (svg) svg.setAttribute('aria-hidden','true'); controls(k, cap, true); };
+    img.onerror = function(){ img.remove(); controls(k, cap, false); };
+    img.src = src;
+    host.appendChild(img);
+  }
+
+  function controls(k, cap, has){
+    if (!cap || cap.querySelector('.pickrow')) return;
+    var row = document.createElement('div');
+    row.className = 'pickrow';
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = has ? 'Change photo' : 'Choose photo';
+    b.addEventListener('click', function(){ openPicker(k); });
+    row.appendChild(b);
+    if (Object.prototype.hasOwnProperty.call(picks,k)) {
+      var r = document.createElement('button');
+      r.type = 'button'; r.className = 'muted'; r.textContent = 'Reset';
+      r.addEventListener('click', function(){ delete picks[k]; save(); render(k); });
+      row.appendChild(r);
+    }
+    cap.appendChild(row);
+  }
+
+  /* ── picker overlay ── */
+  var back, box, grid, msg, input, activeKey;
+
+  function buildPicker(){
+    back = document.createElement('div');
+    back.id = 'pickerBack';
+    back.innerHTML =
+      '<div id="pickerBox" role="dialog" aria-modal="true" aria-label="Choose a photo">' +
+        '<h4>Choose a photo</h4>' +
+        '<p class="hint">Results come from Wikimedia Commons, which is free to use and link to. Click one to drop it into the slide.</p>' +
+        '<div id="pickerBar">' +
+          '<input type="search" id="pickerQ" placeholder="Search Commons">' +
+          '<button type="button" id="pickerGo">Search</button>' +
+          '<button type="button" class="ghost" id="pickerClose">Close</button>' +
+        '</div>' +
+        '<div id="pickerGrid"></div>' +
+        '<p id="pickerMsg"></p>' +
+      '</div>';
+    document.body.appendChild(back);
+    box   = back.querySelector('#pickerBox');
+    grid  = back.querySelector('#pickerGrid');
+    msg   = back.querySelector('#pickerMsg');
+    input = back.querySelector('#pickerQ');
+    back.querySelector('#pickerGo').addEventListener('click', function(){ run(input.value); });
+    back.querySelector('#pickerClose').addEventListener('click', close);
+    input.addEventListener('keydown', function(e){ if (e.key === 'Enter') run(input.value); });
+    back.addEventListener('click', function(e){ if (e.target === back) close(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && back.style.display !== 'none') close(); });
+  }
+
+  function close(){ if (back) back.style.display = 'none'; }
+
+  function openPicker(k){
+    if (!back) buildPicker();
+    activeKey = k;
+    back.style.display = 'flex';
+    grid.innerHTML = '';
+    msg.textContent = '';
+    input.value = FIND[k] || '';
+    run(input.value);
+    input.focus();
+  }
+
+  function run(term){
+    if (!term) return;
+    grid.innerHTML = '';
+    msg.textContent = 'Searching Commons…';
+    var url = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*' +
+              '&generator=search&gsrnamespace=6&gsrlimit=30' +
+              '&gsrsearch=' + encodeURIComponent('filetype:bitmap ' + term) +
+              '&prop=imageinfo&iiprop=url&iiurlwidth=320';
+    fetch(url)
+      .then(function(r){ if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function(d){
+        var pages = d && d.query && d.query.pages;
+        if (!pages) { msg.textContent = 'Nothing found. Try different words.'; return; }
+        msg.textContent = '';
+        Object.keys(pages).forEach(function(id){
+          var pg = pages[id];
+          var ii = pg.imageinfo && pg.imageinfo[0];
+          if (!ii || !ii.thumburl) return;
+          var name = pg.title.replace(/^File:/,'');
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.title = name;
+          var im = new Image();
+          im.src = ii.thumburl; im.alt = name; im.loading = 'lazy';
+          var sp = document.createElement('span');
+          sp.textContent = name.length > 60 ? name.slice(0,57) + '…' : name;
+          b.appendChild(im); b.appendChild(sp);
+          b.addEventListener('click', function(){
+            picks[activeKey] = 'commons:' + name;
+            save(); render(activeKey); close();
+          });
+          grid.appendChild(b);
+        });
+        if (!grid.children.length) msg.textContent = 'Nothing found. Try different words.';
+      })
+      .catch(function(){
+        msg.textContent = 'Could not reach Commons. This search only works when the page is served from your own site — open it from GitHub Pages or a local server rather than inside a preview.';
+      });
+  }
+
+  /* ── export ── */
+  function exportConfig(){
+    if (!back) buildPicker();
+    back.style.display = 'flex';
+    grid.innerHTML = '';
+    msg.textContent = '';
+    box.querySelector('h4').textContent = 'Copy photo config';
+    box.querySelector('.hint').textContent = 'Paste this over the PHOTOS block near the bottom of the HTML file to make your picks permanent.';
+    box.querySelector('#pickerBar').style.display = 'none';
+    var ta = document.getElementById('pickerOut');
+    if (!ta) { ta = document.createElement('textarea'); ta.id = 'pickerOut'; box.insertBefore(ta, grid); }
+    var lines = Object.keys(PHOTOS).map(function(k){
+      return "  '" + k + "': " + JSON.stringify(value(k)) + ",";
+    });
+    lines[lines.length-1] = lines[lines.length-1].replace(/,$/,'');
+    ta.value = 'var PHOTOS = {\n' + lines.join('\n') + '\n};';
+    ta.select();
+  }
+
+  /* ── extras ── */
+  Object.keys(EXTRA).forEach(function(dest){
+    var strip = document.querySelector('#p-' + dest + ' .strip');
+    if (!strip) return;
+    (EXTRA[dest] || []).forEach(function(item){
+      var src = item && resolve(item.src);
+      if (!src) return;
+      var fig = document.createElement('figure'); fig.className = 'scene photo-only';
+      var shot = document.createElement('div'); shot.className = 'shot';
+      shot.style.aspectRatio = '400 / 250'; shot.style.background = 'var(--deep)'; shot.style.borderRadius = '2px';
+      var img = new Image();
+      img.loading = 'lazy'; img.decoding = 'async'; img.referrerPolicy = 'no-referrer';
+      img.alt = item.title || ''; img.onerror = function(){ fig.remove(); }; img.src = src;
+      shot.appendChild(img); fig.appendChild(shot);
+      var cap = document.createElement('figcaption');
+      if (item.title) { var b = document.createElement('b'); b.textContent = item.title; cap.appendChild(b); }
+      if (item.text) cap.appendChild(document.createTextNode(item.text));
+      fig.appendChild(cap); strip.appendChild(fig);
+    });
+  });
+
+  Object.keys(PHOTOS).forEach(render);
+
+  var ex = document.getElementById('exportBtn');
+  if (ex) ex.addEventListener('click', exportConfig);
+})();
+</script>
+<script>
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  var KEY = 'oct27.dest';
+
+  function show(d){
+    tabs.forEach(function(t){
+      var on = t.dataset.d === d;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      document.getElementById('p-' + t.dataset.d).hidden = !on;
+    });
+    document.body.setAttribute('data-dest', d);
+    document.documentElement.setAttribute('data-dest', d);
+    try { localStorage.setItem(KEY, d); } catch (e) {}
+  }
+
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      show(t.dataset.d);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    t.addEventListener('keydown', function(e){
+      var i = tabs.indexOf(t), n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      if (e.key === 'ArrowLeft')  n = tabs[(i - 1 + tabs.length) % tabs.length];
+      if (n) { e.preventDefault(); n.focus(); show(n.dataset.d); }
+    });
+  });
+
+  document.querySelectorAll('.lv').forEach(function(b){
+    b.addEventListener('click', function(){
+      var g = b.dataset.g;
+      document.querySelectorAll('.lv[data-g="' + g + '"]').forEach(function(o){
+        var on = o === b;
+        o.setAttribute('aria-pressed', on ? 'true' : 'false');
+        var panel = document.querySelector('[data-p="' + g + '-' + o.dataset.l + '"]');
+        if (panel) panel.hidden = !on;
+      });
+    });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  show(saved === 'quebec' || saved === 'korea' ? saved : 'azores');
+})();
+</script>
+</body>
+</html>
