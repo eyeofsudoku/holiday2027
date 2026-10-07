@@ -6,6 +6,7 @@
 <title>Three trips for October</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://wsrv.nl" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -1136,20 +1137,20 @@ footer p{max-width:62ch;}
    ═══════════════════════════════════════════════════════════════ */
 
 var PHOTOS = {
-  'az-sete':         'https://www.tour-edition.de/media/images/country/126/xl_Portugal_Sao%20Miguel_Hosta%20mit%20Sonnenuntergang_as_tour_184157687_ie.jpeg',
-  'az-whale':        'https://www.seabookings.com/wp-content/uploads/Whales-Azores-1.webp',
-  'az-furnas':       'https://www.travelnerdsblog.com/wp-content/uploads/2026/03/parque-terra-nostra-10.jpg',
-  'az-portas':       'https://as1.ftcdn.net/jpg/01/74/67/34/1000_F_174673495_N8bqXrnNh3v0JRBu2IFqKe32EoN4xgWB.jpg',
+  'az-sete':         'commons:Lagoa das Sete Cidades, Miradouro da vista do Rei, Sete Cidades, Ponta Delgada, ilha de São Miguel, Açores.JPG',
+  'az-whale':        'commons:Whale (50683933816).jpg',
+  'az-furnas':       'commons:Parque Terra Nostra2.jpg',
+  'az-portas':       'commons:Portas da Cidade, Ponta Delgada, isla de San Miguel, Azores, Portugal, 2020-07-29, DD 123-125 HDR.jpg',
 
-  'qc-frontenac':    'https://www.myglobalviewpoint.com/wp-content/uploads/2024/03/Best-Things-to-Do-in-Quebec-at-Night.jpg',
-  'qc-charlevoix':   'https://www.quebec-spirit.com/images/destinations/baie-saint-paul/hero.jpg',
-  'qc-tadoussac':    'https://www.quebec-spirit.com/images/guides/tadoussac-zodiac-vs-boat-cruise.jpg',
-  'qc-montmorency':  'https://www.quebec-spirit.com/images/tours/montmorency-falls-cable-car-review.jpg',
+  'qc-frontenac':    'commons:Québec city at night, view from Lévis city.jpg',
+  'qc-charlevoix':   'commons:Baie-Saint-Paul, Quebec 4.jpg',
+  'qc-tadoussac':    'commons:Minke whale near Tadoussac.jpg',
+  'qc-montmorency':  'commons:Chute Montmorency MAM.JPG',
 
-  'kr-gyeongju':     'https://tong.visitkorea.or.kr/cms/resource/42/3029042_image2_1.jpg',
-  'kr-hanok':        'https://cdn.sanity.io/images/nxpteyfv/goguides/69f12178cffa40e8bedc5f0135d8e8737f8e1d94-1600x1067.jpg',
-  'kr-calligraphy':  'https://www.sac.or.kr/design/theme/sac/images/sub/exhibit_slide3_2.jpg',
-  'kr-haeinsa':      'https://westwards.de/wp-content/uploads/2021/03/20170719-Heiansa-Tempel-P1460092.jpg'
+  'kr-gyeongju':     'commons:Water reflection of Donggung Palace in Wolji Pond at blue hour in Gyeongju South Korea.jpg',
+  'kr-hanok':        'commons:Jeonju Hanok Maeul 02.jpg',
+  'kr-calligraphy':  'commons:Seoul Calligraphy Art Museum 05.JPG',
+  'kr-haeinsa':      'commons:Haeinsa temple.jpg'
 };
 
 var EXTRA = { azores: [], quebec: [], korea: [] };
@@ -1186,7 +1187,20 @@ var FIND = {
   'kr-haeinsa':     'Haeinsa Tripitaka Koreana'
 };
 
-var COMMONS_WIDTH = 1400;
+/* ─── image delivery ───────────────────────────────────────────
+   Remote photos are routed through wsrv.nl, a free image CDN that
+   resizes them, converts to WebP and caches the result. A 4 MB
+   press JPEG becomes roughly 60–90 KB.
+
+   IMG_WIDTH 800 covers a retina screen at the size these slides
+   actually render. Raise it if you ever make the strip bigger.
+   Set USE_PROXY to false to load originals untouched.
+
+   Files in your own images/ folder are never proxied.
+   ─────────────────────────────────────────────────────────────── */
+var USE_PROXY  = true;
+var IMG_WIDTH  = 800;
+var IMG_QUALITY = 78;
 
 /* ─── nothing below here needs editing ─────────────────────────── */
 (function(){
@@ -1201,9 +1215,21 @@ var COMMONS_WIDTH = 1400;
     if (!v) return '';
     if (v.slice(0,8) === 'commons:') {
       var n = v.slice(8).trim().replace(/^File:/i,'').replace(/ /g,'_');
-      return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(n) + '?width=' + COMMONS_WIDTH;
+      return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(n) + '?width=' + IMG_WIDTH;
     }
     return v;
+  }
+
+  // wsrv.nl: resize + WebP + CDN cache. Skips local files and Commons,
+  // which already serve a correctly sized image.
+  function deliver(v){
+    var raw = resolve(v);
+    if (!raw) return '';
+    if (!USE_PROXY) return raw;
+    if (!/^https?:\/\//i.test(raw)) return raw;
+    if (raw.indexOf('commons.wikimedia.org') !== -1) return raw;
+    return 'https://wsrv.nl/?url=' + encodeURIComponent(raw) +
+           '&w=' + IMG_WIDTH + '&q=' + IMG_QUALITY + '&output=webp&we';
   }
 
   function render(k){
@@ -1216,16 +1242,21 @@ var COMMONS_WIDTH = 1400;
     var svg = host.querySelector('svg');
     if (svg) svg.removeAttribute('aria-hidden');
 
-    var src = resolve(value(k));
+    var raw = resolve(value(k));
+    var src = deliver(value(k));
     if (!src) { controls(k, cap, false); return; }
 
+    var retried = false;
     var img = new Image();
     img.loading = 'lazy';
     img.decoding = 'async';
     img.referrerPolicy = 'no-referrer';
     img.alt = ALT[k] || (svg && svg.getAttribute('aria-label')) || '';
     img.onload  = function(){ if (svg) svg.setAttribute('aria-hidden','true'); controls(k, cap, true); };
-    img.onerror = function(){ img.remove(); controls(k, cap, false); };
+    img.onerror = function(){
+      if (!retried && src !== raw) { retried = true; img.src = raw; return; }  // proxy failed, try origin
+      img.remove(); controls(k, cap, false);
+    };
     img.src = src;
     host.appendChild(img);
   }
@@ -1355,7 +1386,7 @@ var COMMONS_WIDTH = 1400;
     var strip = document.querySelector('#p-' + dest + ' .strip');
     if (!strip) return;
     (EXTRA[dest] || []).forEach(function(item){
-      var src = item && resolve(item.src);
+      var src = item && deliver(item.src);
       if (!src) return;
       var fig = document.createElement('figure'); fig.className = 'scene photo-only';
       var shot = document.createElement('div'); shot.className = 'shot';
@@ -1371,7 +1402,19 @@ var COMMONS_WIDTH = 1400;
     });
   });
 
-  Object.keys(PHOTOS).forEach(render);
+  // Load one destination at a time: 4 images on open instead of 12.
+  var loaded = {};
+  function destOf(k){
+    var pre = k.slice(0,2);
+    return pre === 'az' ? 'azores' : pre === 'qc' ? 'quebec' : 'korea';
+  }
+  function renderDest(d){
+    if (loaded[d]) return;
+    loaded[d] = true;
+    Object.keys(PHOTOS).forEach(function(k){ if (destOf(k) === d) render(k); });
+  }
+  window.__photosFor = renderDest;
+  setTimeout(function(){ if (!Object.keys(loaded).length) renderDest('azores'); }, 400);
 
   var ex = document.getElementById('exportBtn');
   if (ex) ex.addEventListener('click', exportConfig);
@@ -1390,6 +1433,7 @@ var COMMONS_WIDTH = 1400;
     });
     document.body.setAttribute('data-dest', d);
     document.documentElement.setAttribute('data-dest', d);
+    if (window.__photosFor) window.__photosFor(d);
     try { localStorage.setItem(KEY, d); } catch (e) {}
   }
 
